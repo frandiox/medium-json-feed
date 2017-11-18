@@ -29,7 +29,8 @@ module.exports = (endpoint, callback) => {
           && data.payload
           && data.payload.references
           && data.payload.references.Post
-          && Object.values(data.payload.references.Post);
+          && Object.keys(data.payload.references.Post)
+            .map(key => data.payload.references.Post[key]);
 
         if (posts) {
           const result = { status: 200, response: posts };
