@@ -1,0 +1,29 @@
+{
+  "name": "medium-json-feed",
+  "version": "0.0.0",
+  "description": "Get Medium latest articles in JSON format",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frandiox/medium-json-feed.git"
+  },
+  "keywords": [
+    "medium",
+    "json",
+    "feed",
+    "rss"
+  ],
+  "author": "Fran Dios <me@frandiox.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/frandiox/medium-json-feed/issues"
+  },
+  "homepage": "https://github.com/frandiox/medium-json-feed#readme",
+  "engines": {
+    "node": "^6.0.0"
+  }
+}
