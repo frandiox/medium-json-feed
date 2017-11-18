@@ -4,7 +4,10 @@ const mediumJSONFeed = require('./index.js');
 const port = process.env.PORT || 3000;
 const respond = (res, data = {}) => {
   if (!res.finished) {
-    res.writeHead(data.status || 500, { 'Content-Type': 'application/json' });
+    res.writeHead(data.status || 500, {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
     res.end(JSON.stringify(data, null, 2), 'utf-8');
   }
 };
