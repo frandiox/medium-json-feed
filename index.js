@@ -37,7 +37,7 @@ module.exports = (endpoint, callback) => {
           callback instanceof Function && callback(result);
           resolve(result);
         } else {
-          fail(404, 'Resource not found on Medium.', reject, callback);
+          fail(500, 'Could not parse the resource. Medium\'s JSON format might have changed.', reject, callback);
         }
 
       } catch (error) {
