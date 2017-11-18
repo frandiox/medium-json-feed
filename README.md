@@ -29,8 +29,10 @@ mediumJSONFeed('@myUserName') // Usernames start with '@'
 
 mediumJSONFeed('myPublicationName', data => ...); // Publication names without '@'
 
-mediumJSONFeed('', data => ...); // Medium top page (trending posts)
+mediumJSONFeed('/', data => ...); // Medium top page (trending posts)
 ```
+
+Other endpoint examples are `@user-name/latest`, `publicationName/latest` or `publication-name/trending`.
 
 The `data` response contains:
 
@@ -51,7 +53,7 @@ For a full example, see `server.js` file.
 
 ## Live demo (hopefully)
 
-See [The Web Tub's feed](https://medium-json-feed.herokuapp.com/the-web-tub) or [Mikeal Roger's articles](https://medium-json-feed.herokuapp.com/@mikeal).
+See [The Web Tub's trending articles](https://medium-json-feed.herokuapp.com/the-web-tub/trending) or [Mikeal Roger's latest articles](https://medium-json-feed.herokuapp.com/@mikeal/latest).
 
 ## Deploying to Heroku
 

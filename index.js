@@ -23,11 +23,10 @@ module.exports = (endpoint, callback) => {
     res.on('end', () => {
       try {
         data = data.substr(data.indexOf('{'));
-        data = JSON.parse(data);
+        data = JSON.parse(data) || {};
 
-        const posts =  data
-          && data.payload
-          && data.payload.references
+        const posts = data.payload && data.payload.posts
+          || data.payload && data.payload.references
           && data.payload.references.Post
           && Object.keys(data.payload.references.Post)
             .map(key => data.payload.references.Post[key]);
