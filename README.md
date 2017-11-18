@@ -23,16 +23,16 @@ Simple example:
 ```javascript
 const mediumJSONFeed = require('medium-json-feed');
 
-mediumJSONFeed('@myUserName') // Usernames start with '@'
+mediumJSONFeed('/@myUserName') // Usernames start with '@'
   .then(data => ...)
   .catch(data => ...);
 
-mediumJSONFeed('myPublicationName', data => ...); // Publication names without '@'
+mediumJSONFeed('/myPublicationName', data => ...); // Publication names without '@'
 
 mediumJSONFeed('/', data => ...); // Medium top page (trending posts)
 ```
 
-Other endpoint examples are `@user-name/latest`, `publicationName/latest` or `publication-name/trending`.
+Other endpoint examples are `/@user-name/latest`, `/publicationName/latest` or `/publication-name/trending`.
 
 The `data` response contains:
 
@@ -43,8 +43,8 @@ The `data` response contains:
 To get the full raw response given by Medium, provide a stream:
 
 ```javascript
-mediumJSONFeed('@myUserName', process.stdout); // Raw stream pipe to stdout
-mediumJSONFeed('@myUserName', response); // Raw stream pipe to server's response
+mediumJSONFeed('/@myUserName', process.stdout); // Raw stream pipe to stdout
+mediumJSONFeed('/@myUserName', response); // Raw stream pipe to server's response
 ```
 
 *Note: the raw output will likely contain random chacters at the beginning of the string that break JSON format.*
