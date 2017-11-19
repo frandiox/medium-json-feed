@@ -23,31 +23,37 @@ Simple example:
 ```javascript
 const mediumJSONFeed = require('medium-json-feed');
 
-mediumJSONFeed('/@myUserName') // Usernames start with '@'
+// Usernames start with '@'
+mediumJSONFeed('@my-user-name')
   .then(data => ...)
   .catch(data => ...);
 
-mediumJSONFeed('/myPublicationName', data => ...); // Publication names without '@'
+// Publication names without '@'
+mediumJSONFeed('my-publication-name', data => ...);
 
-mediumJSONFeed('/', data => ...); // Medium top page (trending posts)
+// Medium's top page (trending posts)
+mediumJSONFeed().then(data => ...);
 ```
 
-Other endpoint examples are `/@user-name/latest`, `/publicationName/latest` or `/publication-name/trending`.
+Other endpoint examples are `@user-name/latest`, `publication-name/latest` or `publication-name/trending`.
 
 The `data` response contains:
 
-* `data.status`: HTTP status code (number).
-* `data.error`: Error message if exists (string).
-* `data.response`: List of found articles (Array). The format is the one returned by Medium. Inspect `data.response[...].content` and `data.response[...].virtuals` for useful information.
+* `data.status`: HTTP status code (**number**).
+* `data.error`: Error message if exists (**string**).
+* `data.response`: List of found articles (**Array**). The format is the one returned by Medium. Inspect `data.response[...].content` and `data.response[...].virtuals` for useful information.
 
 To get the full raw response given by Medium, provide a stream:
 
 ```javascript
-mediumJSONFeed('/@myUserName', process.stdout); // Raw stream pipe to stdout
-mediumJSONFeed('/@myUserName', response); // Raw stream pipe to server's response
+// Raw stream pipe to stdout
+mediumJSONFeed('@my-user-name', process.stdout);
+
+// Raw stream pipe to server's response
+mediumJSONFeed('@my-user-name', response);
 ```
 
-*Note: the raw output will likely contain random chacters at the beginning of the string that break JSON format.*
+***Note**: the raw output will likely contain random chacters at the beginning of the string that break JSON format.*
 
 For a full example, see `server.js` file.
 
@@ -60,4 +66,5 @@ See [The Web Tub's trending articles](https://medium-json-feed.herokuapp.com/the
 1. Clone this repo.
 2. Create a new app in your [Heroku](https://heroku.com) account.
 3. Choose GitHub deploy and select your fork.
-4. Hit 'deploy'.
+4. Set environment variables `PORT` and `ORIGIN` (for `Access-Control-Allow-Origin` header).
+5. Hit 'deploy'.
