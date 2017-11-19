@@ -1,6 +1,6 @@
 {
   "name": "medium-json-feed",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Get Medium latest articles in JSON format",
   "main": "index.js",
   "scripts": {
