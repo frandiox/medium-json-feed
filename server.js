@@ -2,14 +2,9 @@ const http = require('http');
 const mediumJSONFeed = require('./index.js');
 
 const port = process.env.PORT || 3000;
-const respond = (res, data = {}) => {
-  if (!res.finished) {
-    res.writeHead(data.status || 500, {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
-    });
-    res.end(JSON.stringify(data, null, 2), 'utf-8');
-  }
+const headers = {
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Origin': process.env.ORIGIN || '*'
 };
 
 http.createServer((req, res) => {
@@ -20,9 +15,10 @@ http.createServer((req, res) => {
 
   console.log(`> GET: '${req.url}' --- ${new Date()}`);
 
-  mediumJSONFeed(req.url)
-    .then(data => respond(res, data))
-    .catch(error => respond(res, error));
+  mediumJSONFeed(req.url, data => {
+    res.writeHead(data.status || 500, headers);
+    res.end(JSON.stringify(data, null, 2), 'utf-8');
+  });
 
 }).listen(port);
 
