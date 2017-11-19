@@ -6,8 +6,12 @@ const fail = (status, error, reject, callback) => {
   reject(result);
 };
 
-module.exports = (endpoint = '', callback) => {
-  const url = `https://medium.com${endpoint || '/'}${endpoint.indexOf('?') === -1  ? '?' : '&' }format=json`;
+module.exports = (endpoint = '/', callback) => {
+  if (endpoint.charAt(0) !== '/') {
+    endpoint = '/' + endpoint;
+  }
+
+  const url = `https://medium.com${endpoint}${endpoint.indexOf('?') === -1  ? '?' : '&' }format=json`;
 
   return new Promise((resolve, reject) => https.get(url, res => {
     if (callback && callback.write instanceof Function) {
