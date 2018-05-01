@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/frandiox/medium-json-feed#readme",
   "engines": {
-    "node": "^6.0.0"
+    "node": ">=6.0.0"
   }
 }
